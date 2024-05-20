@@ -1,0 +1,29 @@
+
+.containerSearch {
+    display: flex;
+
+    height: 2.5rem;
+    margin: 1rem;
+   
+    max-width:280px ;
+    border-radius: 20px;
+
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.164);
+    input {
+        max-width: 280px;
+        width: 100%;
+        border: none;
+        border-radius: 0px 20px 20px 0px;
+        outline: none;
+    }
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 20px 0 0 20px;
+        background-color: #FFFFFF;
+        font-size: 1.5rem;
+        padding: 4px;
+    }
+}

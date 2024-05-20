@@ -1,0 +1,18 @@
+@import '../../styles/variables.module.scss';
+
+.tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    max-width:60px;
+
+    margin: 1rem 0;
+    padding: .5rem;
+    background-color:$colorPrimaryBold ;
+    border-radius: 20px;
+
+    color: white;
+
+    box-shadow: 1px 10px 12px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,9 @@
+@import "../styles/style.module.scss";
+
+.header {
+  display: flex;
+  background-color: $colorPrimaryBold;
+  height: 50px;
+  width: 100%;
+
+}

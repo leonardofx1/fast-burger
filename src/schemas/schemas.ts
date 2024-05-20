@@ -8,7 +8,7 @@ export const favorites = pgTable("favorites", {
 
 export const hamburger = pgTable("hamburger", {
 	id: serial("id").primaryKey().notNull(),
-	name: text("name").notNull().unique(),
+	name: text("name").notNull(),
 	value: numeric("value").notNull(),
 	preparationTime: numeric("preparationTime").notNull(),
 	tagID: integer("tagID"),

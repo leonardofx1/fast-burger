@@ -1,0 +1,111 @@
+@import '../../../styles/variables.module.scss';
+
+.wrapperBurger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 800px;
+    width: 100%;
+}
+
+.burgerImage{
+    display: flex;
+    align-items: center;
+    color:$burgerFont;
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+}
+
+.descriptionBurger {
+    max-width: 400px;
+    margin: 0 auto;
+
+
+    font-size: 1.5rem;
+       color:$burgerFont;
+
+    }
+
+.wrapperBtn {
+    position: relative;
+    margin-top: 1.2rem;  
+     span {
+        font-size: 1.5rem;
+        color:$burgerFont;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
+
+.btnBurger {
+    width: 40px;
+
+    border-radius: 10px;
+    background-color: $colorPrimaryBold;
+
+    font-weight: bold;
+    color:white;
+
+    font-size: 1.5rem;
+
+    border: none;
+    cursor: pointer;
+    margin: 10px 5px;
+    padding: .2rem;
+
+}
+
+.wrapperOrder {
+    display: flex;
+  
+    max-width: 500px;
+    
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+
+    gap: 4rem;
+}
+
+.value {
+    display: flex;
+    justify-content: center;
+
+    
+
+    border-radius: 20px;
+    width: 100px;
+
+    color: white;
+    padding: .5rem;
+    background-color: $burgerFont;
+}
+
+.btnOrder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+
+    border-radius: 20px;
+    border: none;
+
+    color: white;
+    background-color: $burgerFont;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+        opacity: .9;
+    }
+}

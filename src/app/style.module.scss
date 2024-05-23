@@ -6,4 +6,16 @@
   width: 100%;
   height: auto;
 
+  margin:  3rem 0;
+}
+
+.burgerWrapper {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  gap: 1rem;
+
+  padding: 0 1rem;
 }

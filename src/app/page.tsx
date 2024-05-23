@@ -13,8 +13,13 @@ export default function Home() {
           <Tags />
         </div>
 
-        <CardBurger/>
+       <section className={style.burgerWrapper}>
+       <CardBurger/>
+        <CardBurger/>  <CardBurger/>  <CardBurger/>  <CardBurger/>  <CardBurger/>
+
+       </section>
       </Wrapper>
+      
     </main>
   );
 }

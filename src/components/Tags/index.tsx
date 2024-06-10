@@ -10,8 +10,6 @@ export const Tags = () => {
         <span className={style.tagsActive}>
             All
         </span>
-         <span className={style.tags}>
-         All
-     </span></>
+       </>
     )
 }

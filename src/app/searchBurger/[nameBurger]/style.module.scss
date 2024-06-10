@@ -1,0 +1,15 @@
+.title {
+    color: white;
+    margin: 1rem 15px;
+}
+
+.wrapperCards {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin: 1rem 0;
+}

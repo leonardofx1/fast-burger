@@ -11,7 +11,6 @@ export const hamburger = pgTable("hamburger", {
 	name: text("name").notNull(),
 	value: numeric("value").notNull(),
 	preparationTime: numeric("preparationTime").notNull(),
-	tagID: integer("tagID"),
 	urlImage:text('urlImage').notNull()
 },
 (table) => {

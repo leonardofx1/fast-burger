@@ -1,0 +1,39 @@
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    
+    color: white;
+
+
+    gap: 1rem;
+
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        & input {
+            margin: 5px 15px;
+           padding: 10px;
+            border-radius: 5px;
+            border: none;
+            max-width:300px ;
+        }
+    }
+}
+.wrapperDescription {
+   
+    & textarea {
+        resize: none;
+        display: block;
+        width: 300px;
+        height: 200px;
+        margin: 5px 15px ;
+    }
+}

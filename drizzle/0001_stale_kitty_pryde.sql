@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS "hamburger" (
 	"value" numeric NOT NULL,
 	"amount" integer NOT NULL,
 	"preparationTime" numeric NOT NULL,
-	"tagID" integer,
 	CONSTRAINT "hamburger_name_unique" UNIQUE("name")
 );
 

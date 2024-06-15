@@ -1,16 +1,19 @@
+
+
 import { Wrapper } from '@/components/Wrapper'
 import { Input } from './input'
 import style from './style.module.scss'
+import { createBurger } from '@/lib/createBurger'
 
 
 
 
 const admin = () => {
-
+    createBurger()
 
     return (
         <Wrapper>
-            <form action="" className={style.form}>
+            <form  className={style.form} >
 
                 <Input label='Nome do hambúrguer' name='title' type='text' />
                 
@@ -26,7 +29,7 @@ const admin = () => {
                </div>
                 
                 <Input label='Escolha uma imagem do produto' name='img' type='file' />
-
+        <button type="submit">Cadastrar</button>
             </form>
 
         </Wrapper>

@@ -3,11 +3,11 @@ import { pgTable, integer, unique, serial, text, numeric } from "drizzle-orm/pg-
 
 export const favorites = pgTable("favorites", {
 	hamburgerID: integer("hamburgerID").notNull().references(()=> hamburger.id),
-	clientID: integer("clientID").notNull().references(() => client.id),
+	clientID: integer("clientID").notNull().references(() => client.id)
 });
 
 export const hamburger = pgTable("hamburger", {
-	id: serial("id").primaryKey().notNull(),
+	id: serial("id").primaryKey(),
 	name: text("name").notNull(),
 	value: numeric("value").notNull(),
 	preparationTime: numeric("preparationTime").notNull(),

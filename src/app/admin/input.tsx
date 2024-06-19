@@ -1,16 +1,18 @@
-import { InputType } from "@/components/types/inputType"
+import { InputType } from "@/components/types/inputType";
 
 
+type Tname = "name" | "price" | "amount" | "time";
 
 
-
-export const Input = ({type = 'text', name, label }:InputType) => {
-
-
-    return (
-        <label htmlFor="">
-            {label}
-             <input type={type} name={name}/>
-        </label>
-)
-}
+export const Input = ({ type = 'text', name, label, register }: InputType) => {
+  return (
+    <label htmlFor={name}>
+      {label}
+      <input
+        type={type}
+        {...register(name as Tname )}
+   
+      />
+    </label>
+  );
+};

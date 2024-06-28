@@ -6,10 +6,8 @@ import Link from 'next/link';
 import { FiLogIn } from "react-icons/fi";
 import { signIn } from 'next-auth/react';
 
-import imageo from '../../../public/imageo.png'
-import Image from 'next/image';
-export const Header = ()=> {
-
+import { fetchBurgerApi } from '@/utils/fetchBurgerApi';
+export const Header = async ()=> {
 
     return (
       <header className={style.header}>

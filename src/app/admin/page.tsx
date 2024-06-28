@@ -6,9 +6,10 @@ import { Input } from "./input";
 import style from "./style.module.scss";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 import { uploadImage } from "@/utils/uploadImage";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
+import { PostCreateBurger } from "@/utils/postCreateBurger";
 
 export const schemaCreateBurger = z.object({
   name: z.string().min(3, { message: "Insira um nome válido." }),
@@ -20,6 +21,8 @@ export const schemaCreateBurger = z.object({
 });
 export type userFormType = z.infer<typeof schemaCreateBurger>;
 const admin = () => {
+    const [errorPost, setErrorPost] = useState({statusError:false,  message:''})
+
   const {
     register,
     handleSubmit,
@@ -28,16 +31,30 @@ const admin = () => {
   } = useForm<userFormType>({
     resolver: zodResolver(schemaCreateBurger),
   });
-  const submit = (data: userFormType): void => {
-    console.log("antes", data);
-    setValue("name", "marcos");
-    console.log("depois", data);
+  const handlePostBurger =async  (data: userFormType) => {
+    try{
+      const res = await  PostCreateBurger(data)
+     
+    
+    }
+    catch(error) {
+      console.error(error)
+      setErrorPost({statusError:true, message:'Não foi possivel criar o lanche.'})
+    }
+
+
+      
+
   };
+  const handleChangeImg = async (data:ChangeEvent<HTMLInputElement>) => {
+        const resUrl = await uploadImage(data)
+        typeof resUrl == 'string' && setValue('imgUrl', resUrl)
+  }
 
   return (
     <Wrapper>
-      <form className={style.form} onSubmit={handleSubmit(submit)}>
-        <input onChange={uploadImage} name="img" type="file" />
+      <form className={style.form} onSubmit={handleSubmit(handlePostBurger)}>
+        <input onChange={handleChangeImg} name="img" type="file" />
         {errors?.imgUrl?.message && <span> {errors?.imgUrl?.message}</span>}
 
         <Input
@@ -69,6 +86,7 @@ const admin = () => {
         </div>
 
         <button type="submit">Cadastrar</button>
+
       </form>
     </Wrapper>
   );

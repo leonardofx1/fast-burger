@@ -1,5 +1,5 @@
 import { userFormType } from "@/app/admin/page";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import {  UseFormRegister } from "react-hook-form";
 
 export interface InputType {
     name:string,

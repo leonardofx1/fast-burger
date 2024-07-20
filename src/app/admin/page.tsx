@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { storage } from "@/firebase/firebaseConfig";
+
 import { Wrapper } from "@/components/Wrapper";
 import { Input } from "./input";
 import style from "./style.module.scss";
@@ -13,9 +13,9 @@ import { PostCreateBurger } from "@/utils/postCreateBurger";
 
 export const schemaCreateBurger = z.object({
   name: z.string().min(3, { message: "Insira um nome válido." }),
-  price: z.coerce.number().positive({ message: "Insira um preço válido EX: 30 R$." }),
+  value: z.coerce.number().positive({ message: "Insira um preço válido EX: 30 R$." }),
   amount: z.coerce.number().positive({ message: "Quantos items no estoque." }),
-  time: z.coerce.number().positive({ message: "Tempo de preparação do lanche" }),
+  preparationTime: z.coerce.number().positive({ message: "Tempo de preparação do lanche" }),
   imgUrl:z.string({message:'Escolha uma imagem.'} ).min(5),
   description: z.string({message:'Insira uma descrição do lanche .'})
 });
@@ -64,8 +64,8 @@ const admin = () => {
           type="text"
         />
         {errors?.name?.message && <span>{errors.name?.message}</span>}
-        <Input register={register} label="Preço" name="price" type="text" />
-        {errors?.price?.message && <span> {errors.price?.message}</span>}
+        <Input register={register} label="Preço" name="value" type="text" />
+        {errors?.value?.message && <span> {errors.value?.message}</span>}
         <Input
           register={register}
           label="Estoque"
@@ -76,10 +76,10 @@ const admin = () => {
         <Input
           register={register}
           label="Tempo de preparação"
-          name="time"
+          name="preparationTime"
           type="text"
         />
-        {errors?.time?.message && <span>{errors?.time?.message}</span>}
+        {errors?. preparationTime?.message && <span>{errors?. preparationTime?.message}</span>}
         <div className={style.wrapperDescription}>
           <p>Descrição do lanche.</p>
           <textarea onChange={(data:ChangeEvent<HTMLTextAreaElement>) => {setValue('description', data.target.value)}} name="" id=""></textarea>

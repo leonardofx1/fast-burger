@@ -1,12 +1,12 @@
 import { relations } from "drizzle-orm";
-import { client, favorites, hamburger, orders, stock } from "./schemas";
+import { user, favorites, hamburger, orders, stock } from "./schemas";
 
 
 
 export const ordersRelation = relations(orders, ({ one }) => ({
-    client: one(client, {
+    user: one(user, {
         fields: [orders.clientID],
-        references: [client.id]
+        references: [user.id]
     }),
     hamburger: one(hamburger, {
         fields: [orders.hamburgerID],
@@ -16,16 +16,16 @@ export const ordersRelation = relations(orders, ({ one }) => ({
 
 export const favoritesRelation = relations(favorites, ({ one }) => ({
     hamburger: one(hamburger, {
-        fields: [favorites.hamburgerID],
+        fields: [favorites.hamburger],
         references: [hamburger.id]
     }),
-    client: one(client, {
-        fields: [favorites.clientID],
-        references: [client.id],
+    user: one(user, {
+        fields: [favorites.user],
+        references: [user.id],
     })
 }))
 
-export const clientRelation = relations(client, ({ many }) => ({
+export const clientRelation = relations(user, ({ many }) => ({
     favorite: many(favorites),
     orders: many(orders)
 }))

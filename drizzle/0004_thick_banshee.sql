@@ -1,0 +1,1 @@
+ALTER TABLE "hamburger" ADD COLUMN "description" text NOT NULL;

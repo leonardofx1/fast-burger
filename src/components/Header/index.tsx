@@ -2,12 +2,15 @@
 import style from './style.module.scss'
 import { LiaHamburgerSolid } from "react-icons/lia";
 import { GiFastArrow } from "react-icons/gi";
+import { PiShoppingCartFill } from "react-icons/pi";
 import Link from 'next/link';
 import { FiLogIn } from "react-icons/fi";
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { postFavorites } from '@/utils/cart/postFavorites';
 
-import { fetchBurgerApi } from '@/utils/fetchBurgerApi';
-export const Header = async ()=> {
+
+export const Header = ()=> {
+const user = useSession()
 
     return (
       <header className={style.header}>
@@ -17,20 +20,18 @@ export const Header = async ()=> {
             Fast Burger
         </h1>
          </Link>
-        <nav>
-            <ul>
-                <li>Lanches</li>
-                <li>Destaques</li>
-            </ul>
-        </nav>
-
-            <div className={style.login}    onClick={() => signIn('google')}>
+            {!user.data ?<div className={style.login}    onClick={() => signIn('google')}>
                 Entrar
-            
                 <FiLogIn size={30}/>
-
+            </div>: <div className={style.cartWrapper}>
+                <span className={style.countItemsCart}>2</span>
+            < PiShoppingCartFill  onClick={()  => postFavorites({clientID:1, hamburgerID:44})}size={25} />
+                 
             </div>
-         
+ }
+
+            
+           
             
     
       </header>

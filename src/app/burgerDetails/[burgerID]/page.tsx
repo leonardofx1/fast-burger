@@ -5,6 +5,7 @@ import Image from 'next/image'
 import imageo from '../../../../public/imageo.png'
 
 import { FaStar } from 'react-icons/fa'
+import { OrderByQuantity } from './OrderByQuantity'
 
 
 
@@ -39,15 +40,7 @@ const burgerDetails = () => {
                     </p>
                 </div>
                 <div className={style.wrapperBtn}>
-                    <span>porção</span>
-                    <div>
-                        <button className={style.btnBurger}>-</button> 1<button className={style.btnBurger}>+</button>
-                    </div>
-
-                </div>
-                <div className={style.wrapperOrder}>
-                    <strong className={style.value}>R$ 25</strong>
-                    <button className={style.btnOrder}>Peça agora</button>
+                  <OrderByQuantity price={25} />
                 </div>
             </section>
         </Wrapper>

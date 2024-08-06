@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 export const updateBurger = async () => {
    
        const obj = {

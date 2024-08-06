@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
+import ContextProvider from "@/components/Providers/ContextProvider";
 
 const roboto = Roboto({
   weight: '400',
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body >
       <SessionProvider session={session}>
       <Header />
-        {children}
+      <ContextProvider>  {children}</ContextProvider>
         <Footer />
       </SessionProvider>
         </body>

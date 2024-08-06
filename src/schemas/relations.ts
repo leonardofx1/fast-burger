@@ -16,11 +16,11 @@ export const ordersRelation = relations(orders, ({ one }) => ({
 
 export const favoritesRelation = relations(favorites, ({ one }) => ({
     hamburger: one(hamburger, {
-        fields: [favorites.hamburger],
+        fields: [favorites.hamburgerID],
         references: [hamburger.id]
     }),
     user: one(user, {
-        fields: [favorites.user],
+        fields: [favorites.userID],
         references: [user.id],
     })
 }))

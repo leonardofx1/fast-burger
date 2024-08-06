@@ -1,5 +1,5 @@
-ALTER TABLE "favorites" RENAME COLUMN "hamburgerID" TO "hamburger";--> statement-breakpoint
-ALTER TABLE "favorites" RENAME COLUMN "clientID" TO "user";--> statement-breakpoint
+ALTER TABLE "favorites" RENAME COLUMN "hamburger" TO "hamburgerID";--> statement-breakpoint
+ALTER TABLE "favorites" RENAME COLUMN "user" TO "userID";--> statement-breakpoint
 ALTER TABLE "favorites" DROP CONSTRAINT "favorites_hamburgerID_hamburger_id_fk";
 --> statement-breakpoint
 ALTER TABLE "favorites" DROP CONSTRAINT "favorites_clientID_user_id_fk";

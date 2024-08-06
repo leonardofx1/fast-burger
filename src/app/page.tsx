@@ -8,9 +8,10 @@ import Image from "next/image";
 import imageo from '../../public/imageo.png'
 import { fetchBurgerApi } from "@/utils/fetchBurgerApi";
 import { userFormType } from "./admin/page";
+import { IBurger } from "@/components/types/burgerType";
 
 export default async function Home() {
-  const {res}= await fetchBurgerApi()
+  const res = await fetchBurgerApi()
   console.log(res)
   return (
     <main className={style.main}>
@@ -31,7 +32,7 @@ export default async function Home() {
           <h2>Descubra o Mundo dos Hambúrgueres Gourmet</h2>
 
          
-         {res.map(({id, name,value, preparationTime, urlImage}) =>  <CardBurger href='./burgerDetails/1' id={id} name={name} preparationTime={preparationTime} urlImage={urlImage} />)}
+         {res.map((burger:IBurger) =>  <CardBurger href='./burgerDetails/1' {...burger}/>)}
         </section>     <section className={style.burgerWrapper}>
           <h2>Explore o Sabor Único do Nosso Hambúrguer Vegano</h2>
          

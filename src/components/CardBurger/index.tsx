@@ -1,30 +1,40 @@
-"use client"
+'use client'
 import Image from 'next/image'
 import style from './style.module.scss'
 import image from '../../../public/image.png'
 import { FaStar } from "react-icons/fa";
-
 import { MdFavorite} from 'react-icons/md';
 import Link from 'next/link';
-import { useState } from 'react';
-import { postFavorites } from '@/utils/cart/postFavorites';
+
+import { IBurger } from '../types/burgerType';
+import useFavorites from '@/app/Hooks/useFavorites';
+
 import { useSession } from 'next-auth/react';
+import { useContext, useEffect } from 'react';
+
+import { context } from '@/context/CardsFavorites';
 
 
-export const CardBurger = (params) => {
-const [isFavorite, setIsFavorite] = useState<Boolean>(false)
-    console.log(params)
+export const CardBurger = (card:IBurger & {href:string}) => {
+    const {cardsFavorites, handleAddFavorites, handleRemoveFavorites} = useContext(context)
+
+    const user = useSession()
+    const isFavorite = cardsFavorites?.some(({id} )=> id === card.id)
+    console.log(isFavorite)
+    console.log(cardsFavorites,'contextoo')
+
+
     return (
     <>
         <article className={style.cardBody}>
-      <Link href={params.href}>
+      <Link href={card.href}>
             <div className={style.cardImageWrapper}>
-                <Image src={image} height={50} unoptimized quality={100} width={50} alt="imagem burguer" />
+                <Image src={card.imgUrl} height={50} unoptimized quality={100} width={50} alt="imagem burguer" />
 
             </div>
             <div className={style.cardContent}>
                 <h2>
-                    Cheeseburger
+                    {card.name}
                 </h2>
                 <strong>
                     Wendy's Burger
@@ -36,9 +46,15 @@ const [isFavorite, setIsFavorite] = useState<Boolean>(false)
                 <span className={ style.cardIconStar }>
                 <FaStar /> 4.8
                 </span>
-                <span className={isFavorite ? style.carIconFavorite : style.carIconNotFavorite}  onClick={() => postFavorites(params.id)}   >
+               {user.status ==='authenticated' ? ( <span className={isFavorite ?style.cardIconFavorite: style.cardIconNotFavorite}  onClick={ ()=> isFavorite ? handleRemoveFavorites(card.id):handleAddFavorites(card)
+                }  >
+                <MdFavorite />
+                </span>):( <span className={style.carIconNotFavorite}
+                 >
                 <MdFavorite />
                 </span>
+            
+            )}
             </div>
         </article></>
     )

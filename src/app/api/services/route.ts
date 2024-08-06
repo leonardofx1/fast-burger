@@ -10,7 +10,7 @@ if(req.method === "POST"){
     const bodyText = await req.text();
     const parsedData = JSON.parse(bodyText);
     try {
-        const res = await db.insert(hamburger).values({...parsedData, urlImage:parsedData.imgUrl}).returning()
+        const res = await db.insert(hamburger).values({...parsedData, urlImage:parsedData.imgUrl})
 
         return NextResponse.json({ message: 'Produto criado  com sucesso!' });
     }catch(error) {
@@ -23,8 +23,8 @@ export async function GET (req:NextRequest) {
     if(req.method == "GET") {
         try {
             const res = await db.query.hamburger.findMany()
-       
-            return NextResponse.json({...res})
+  
+            return NextResponse.json(res)
         } catch (error) {
             console.error(error)
             return NextResponse.json({message:'Não foi possível obter os dados da requisição'})
@@ -39,8 +39,8 @@ export async function DELETE (req:NextRequest) {
             const ed = await req.text()
             console.log(ed, 'id')
             const id = 5
-            const res = await   db.delete(hamburger).where(eq(hamburger.id, id)).returning({id: hamburger.id})
-            console.log(res, 'dentro')
+            const res = await   db.delete(hamburger).where(eq(hamburger.id, id))
+
             return NextResponse.json({message:'deletado com sucesso.'})
         } catch (error) {
             console.error(error)
@@ -53,7 +53,7 @@ export async  function PUT (req:NextRequest) {
     if(req.method == 'PUT') {
         const res = await  req.text()
         const convert = JSON.parse(res)
-        console.log(convert, 'convertido')
+  
       try {
 
         const res = await db.update(hamburger).set(convert).where(eq(hamburger.id, 44))

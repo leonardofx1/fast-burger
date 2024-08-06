@@ -33,14 +33,21 @@
 .cardContent {
     display: flex;
     flex-direction: column;
+   
+    text-align: center;
 
     padding: 0 0 0 8px;
     width: 100%;
 
     h2 {
-        color: $burgerFont;
+        height: 40px;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+
+        overflow: hidden;
+        
+        color: $burgerFont;
+   
     }
 
     strong {
@@ -72,10 +79,12 @@
     color: #FF9633;
 }
 
-.carIconNotFavorite {
+.cardIconNotFavorite {
+    cursor: pointer;
     color: white;
 }
-.carIconFavorite { 
+.cardIconFavorite { 
+    cursor: pointer;
     color: #ff0015;
 
 }

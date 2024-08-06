@@ -48,7 +48,7 @@ const admin = () => {
   };
   const handleChangeImg = async (data:ChangeEvent<HTMLInputElement>) => {
         const resUrl = await uploadImage(data)
-        typeof resUrl == 'string' && setValue('imgUrl', resUrl)
+        typeof resUrl === 'string' && setValue('imgUrl', resUrl)
   }
 
   return (

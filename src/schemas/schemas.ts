@@ -27,8 +27,8 @@ export const hamburger = pgTable("hamburger", {
 });
 
 export const favorites = pgTable("favorites", {
-	hamburger: integer("hamburger").notNull().references(() => hamburger.id),
-	user: text("user").notNull().references(() => user.id),
+	hamburgerID: integer("hamburgerID").notNull().references(() => hamburger.id).unique(),
+	userID: text("userID").notNull().references(() => user.id),
   });
   
 export const orders = pgTable("orders", {

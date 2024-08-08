@@ -21,6 +21,8 @@ if(req.method === "POST"){
 
 export async function GET (req:NextRequest) {
     if(req.method == "GET") {
+   
+      
         try {
             const res = await db.query.hamburger.findMany()
   
@@ -37,7 +39,6 @@ export async function DELETE (req:NextRequest) {
     if(req.method == 'DELETE') {
         try {
             const ed = await req.text()
-            console.log(ed, 'id')
             const id = 5
             const res = await   db.delete(hamburger).where(eq(hamburger.id, id))
 

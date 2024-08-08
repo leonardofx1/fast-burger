@@ -1,5 +1,6 @@
 'use client'
 import { IBurger } from "@/components/types/burgerType";
+import { IcontextFavorites } from "@/components/types/contextType";
 import { getFavorites } from "@/utils/cart/getFavorites";
 import { postFavorites } from "@/utils/cart/postFavorites";
 import { deleteBurger } from "@/utils/deleteBurger";
@@ -7,7 +8,7 @@ import { createContext,useEffect,useState } from "react";
 
 
 
-export const context = createContext([])
+export const  contextFavorites = createContext< IcontextFavorites | null>(null)
 
 
 
@@ -37,9 +38,9 @@ export const CardsFavoritesProvider = ({children}:{children:React.ReactNode}) =>
     
 
 return (
-    <context.Provider value={{cardsFavorites, setCardsFavorites, handleAddFavorites,handleRemoveFavorites}} >
+    < contextFavorites.Provider value={{cardsFavorites, setCardsFavorites, handleAddFavorites,handleRemoveFavorites}} >
         {children}
-    </context.Provider>
+    </ contextFavorites.Provider>
 )
 }
 

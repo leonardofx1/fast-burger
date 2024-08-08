@@ -1,27 +1,27 @@
 'use client'
 import Image from 'next/image'
 import style from './style.module.scss'
-import image from '../../../public/image.png'
+
 import { FaStar } from "react-icons/fa";
 import { MdFavorite} from 'react-icons/md';
 import Link from 'next/link';
 
 import { IBurger } from '../types/burgerType';
-import useFavorites from '@/app/Hooks/useFavorites';
+
 
 import { useSession } from 'next-auth/react';
 import { useContext, useEffect } from 'react';
 
-import { context } from '@/context/CardsFavorites';
+import { contextFavorites } from '@/context/CardsFavorites';
+import { IcontextFavorites } from '../types/contextType';
 
 
 export const CardBurger = (card:IBurger & {href:string}) => {
-    const {cardsFavorites, handleAddFavorites, handleRemoveFavorites} = useContext(context)
+    const {cardsFavorites, handleAddFavorites, handleRemoveFavorites} = useContext(contextFavorites) as IcontextFavorites
 
     const user = useSession()
     const isFavorite = cardsFavorites?.some(({id} )=> id === card.id)
-    console.log(isFavorite)
-    console.log(cardsFavorites,'contextoo')
+   
 
 
     return (

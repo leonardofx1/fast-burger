@@ -1,4 +1,3 @@
-import { Tags } from "@/components/Tags"
 
 import style from './style.module.scss'
 import { SearchInput } from "@/components/SearchInput";
@@ -7,12 +6,12 @@ import { CardBurger } from "@/components/CardBurger";
 import Image from "next/image";
 import imageo from '../../public/imageo.png'
 import { fetchBurgerApi } from "@/utils/fetchBurgerApi";
-import { userFormType } from "./admin/page";
+
 import { IBurger } from "@/components/types/burgerType";
 
 export default async function Home() {
   const res = await fetchBurgerApi()
-  console.log(res)
+
   return (
     <main className={style.main}>
 

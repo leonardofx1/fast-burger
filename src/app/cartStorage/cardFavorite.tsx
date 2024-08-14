@@ -1,24 +1,23 @@
 import Image from 'next/image'
 import { IconClose } from './IconClose'
 import style from './style.module.scss'
-import useFavorites from '../Hooks/useFavorites'
-import { useEffect } from 'react'
+
+import { useContext } from 'react'
+import { contextFavorites } from '@/context/CardsFavorites'
+import { IBurger } from '@/components/types/burgerType'
 
 
-export const CardFavorite =  ({cart})=> {
-    const {isFavorite, handleRemoveFavorites,setIdCard} = useFavorites()
-    useEffect( ()=> {
-        setIdCard(cart.id)
-    },[cart.id])
-    console.log(isFavorite, 'dentro do cartttttt',cart)
+export const CardFavorite =  ({urlImage, id, description, value}:IBurger)=> {
+    const {handleRemoveFavorites} = useContext(contextFavorites)
+
 
     return ( <>
-       {isFavorite ?(
-         <div key={cart.id} className={style.cardBody}>
-        <IconClose  handleRemoveFavorites={handleRemoveFavorites} id={cart.id} />
+    
+         <div key={id} className={style.cardBody}>
+        <IconClose  handleRemoveFavorites={handleRemoveFavorites} id={id} />
         <div className={style.cardImg}>
           <Image
-            src={cart.imgUrl}
+            src={urlImage}
             alt="hamburger"
             width={250}
             height={150}
@@ -27,10 +26,9 @@ export const CardFavorite =  ({cart})=> {
           />
         </div>
         <div className={style.cardDescription}>
-          {cart.description}
-          <h2>R$ {cart.value}</h2>
+          {description}
+          <h2>R$ {value}</h2>
         </div>
-      </div>) : (<span>vaziooooooooooo</span>)}
-     </>
+      </div></>
     )
 }

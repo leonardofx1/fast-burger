@@ -8,7 +8,6 @@ import Link from 'next/link';
 
 import { IBurger } from '../types/burgerType';
 
-
 import { useSession } from 'next-auth/react';
 import { useContext, useEffect } from 'react';
 

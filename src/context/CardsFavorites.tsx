@@ -13,7 +13,7 @@ export const  contextFavorites = createContext< IcontextFavorites | null>(null)
 
 
 export const CardsFavoritesProvider = ({children}:{children:React.ReactNode}) =>{
-    const [cardsFavorites, setCardsFavorites] = useState<IBurger[]>()
+    const [cardsFavorites, setCardsFavorites] = useState<IBurger[]|[]>([])
     
     const getCardsFavorites = async () => {
         const res =  await getFavorites()

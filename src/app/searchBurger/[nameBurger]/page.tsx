@@ -15,7 +15,7 @@ import { BurgerNotFound } from '@/components/BurgerNotFound'
 const searchPage =async  ({params:{nameBurger}}:{params:{nameBurger:string}}) => {
 const res = await searchBurger(nameBurger)
 const  isEmpty = res.length === 0
-console.log(isEmpty)
+
 return(
        <Wrapper>
         <Link href='../burgerDetails/4' >teste</Link>

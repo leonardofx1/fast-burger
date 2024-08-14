@@ -1,23 +1,23 @@
 "use client";
 
+
 import { IBurger } from "@/components/types/burgerType";
-import useFavorites from "../Hooks/useFavorites";
-import style from "./style.module.scss";
-import Image from "next/image";
-import { IconClose } from "./IconClose";
+import { contextFavorites } from "../../context/CardsFavorites";
+
 import { CardFavorite } from "./cardFavorite";
+import { useContext } from "react";
 
 export const ShowCartsFavorites = () => {
-  const { cartsFavorites, isFavorite } = useFavorites();
+  const { cardsFavorites} = useContext(contextFavorites) 
   
  
 
   return (
     <>
-      {cartsFavorites === null || cartsFavorites === undefined ? (
+      {cardsFavorites?.length === 0  ? (
         <p>sem itens no carrinho</p>
       ) : (
-        cartsFavorites.map((cart) => < CardFavorite cart={cart} />
+        cardsFavorites.map((cart:IBurger) => < CardFavorite {...cart} />
         )
       )}
     </>
